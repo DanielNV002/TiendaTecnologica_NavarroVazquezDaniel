@@ -1,0 +1,174 @@
+{
+  "tienda": {
+    "nombre": "Mi Tienda Online",
+    "categorias": [
+      {
+        "id": 1,
+        "nombre": "Electrónica",
+        "productos": [
+          {
+            "id": 101,
+            "nombre": "Smartphone",
+            "precio": 999.99,
+            "descripcion": "El último smartphone del mercado.",
+            "caracteristicas": {
+              "pantalla": "6.5 pulgadas",
+              "camara": "48 MP",
+              "bateria": "4500 mAh"
+            },
+            "imagenes": ["imagen1.jpg", "imagen2.jpg"],
+            "inventario": 10
+          },
+          {
+            "id": 102,
+            "nombre": "Laptop Gaming",
+            "precio": 1999.99,
+            "descripcion": "Laptop potente para juegos y trabajo profesional.",
+            "caracteristicas": {
+              "pantalla": "15.6 pulgadas",
+              "procesador": "Intel i7",
+              "ram": "16 GB",
+              "disco": "1 TB SSD"
+            },
+            "imagenes": ["imagen3.jpg", "imagen4.jpg"],
+            "inventario": 5
+          },
+          {
+            "id": 103,
+            "nombre": "Auriculares Inalámbricos",
+            "precio": 129.99,
+            "descripcion": "Auriculares bluetooth con cancelación de ruido.",
+            "caracteristicas": {
+              "bateria": "20 horas",
+              "conexion": "Bluetooth 5.0",
+              "color": "Negro"
+            },
+            "imagenes": ["imagen5.jpg", "imagen6.jpg"],
+            "inventario": 25
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "nombre": "Ropa y Accesorios",
+        "productos": [
+          {
+            "id": 201,
+            "nombre": "Camiseta Deportiva",
+            "precio": 19.99,
+            "descripcion": "Camiseta transpirable para deporte.",
+            "caracteristicas": {
+              "material": "Poliéster",
+              "tamaño": "M, L, XL",
+              "color": "Azul"
+            },
+            "imagenes": ["imagen7.jpg", "imagen8.jpg"],
+            "inventario": 50
+          },
+          {
+            "id": 202,
+            "nombre": "Zapatos Running",
+            "precio": 89.99,
+            "descripcion": "Zapatos deportivos de alta calidad para correr.",
+            "caracteristicas": {
+              "material": "Sintético",
+              "tamaño": "40, 42, 44",
+              "color": "Negro"
+            },
+            "imagenes": ["imagen9.jpg", "imagen10.jpg"],
+            "inventario": 30
+          },
+          {
+            "id": 203,
+            "nombre": "Reloj Inteligente",
+            "precio": 159.99,
+            "descripcion": "Reloj inteligente con seguimiento de actividad física.",
+            "caracteristicas": {
+              "pantalla": "1.4 pulgadas",
+              "bateria": "48 horas",
+              "funciones": "Monitor de ritmo cardíaco, GPS"
+            },
+            "imagenes": ["imagen11.jpg", "imagen12.jpg"],
+            "inventario": 15
+          }
+        ]
+      }
+    ],
+    "usuarios": [
+      {
+        "id": 1,
+        "nombre": "Juan Pérez",
+        "email": "juanperez@example.com",
+        "direccion": {
+          "calle": "Calle Principal",
+          "numero": 123,
+          "ciudad": "Madrid",
+          "pais": "España"
+        },
+        "historialCompras": [
+          {
+            "productoId": 101,
+            "cantidad": 2,
+            "fecha": "2023-11-14"
+          },
+          {
+            "productoId": 103,
+            "cantidad": 1,
+            "fecha": "2023-11-15"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "nombre": "Laura Gómez",
+        "email": "laura.gomez@example.com",
+        "direccion": {
+          "calle": "Calle de la Luna",
+          "numero": 456,
+          "ciudad": "Barcelona",
+          "pais": "España"
+        },
+        "historialCompras": [
+          {
+            "productoId": 202,
+            "cantidad": 1,
+            "fecha": "2023-11-16"
+          },
+          {
+            "productoId": 201,
+            "cantidad": 3,
+            "fecha": "2023-11-17"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "nombre": "Carlos Ruiz",
+        "email": "carlos.ruiz@example.com",
+        "direccion": {
+          "calle": "Avenida del Sol",
+          "numero": 789,
+          "ciudad": "Valencia",
+          "pais": "España"
+        },
+        "historialCompras": [
+          {
+            "productoId": 103,
+            "cantidad": 2,
+            "fecha": "2023-11-18"
+          },
+          {
+            "productoId": 202,
+            "cantidad": 1,
+            "fecha": "2023-11-19"
+          },
+          {
+            "productoId": 101,
+            "cantidad": 1,
+            "fecha": "2023-11-20"
+          }
+        ]
+      }
+    ]
+  }
+}
