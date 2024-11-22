@@ -11,6 +11,9 @@ package com.mycompany.tiendatecnologica;
 public class TiendaTecnologica {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        TiendaView tV = new TiendaView();
+        tV.setVisible(true);
+        BBDD bd = new BBDD();
+        //bd.lanzarBBDD();
     }
 }
