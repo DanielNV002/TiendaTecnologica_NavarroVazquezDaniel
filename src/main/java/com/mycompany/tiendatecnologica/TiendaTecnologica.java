@@ -14,6 +14,6 @@ public class TiendaTecnologica {
         TiendaView tV = new TiendaView();
         tV.setVisible(true);
         BBDD bd = new BBDD();
-        //bd.lanzarBBDD();
+        bd.lanzarBBDD();
     }
 }

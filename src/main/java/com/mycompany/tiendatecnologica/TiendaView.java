@@ -4,6 +4,8 @@
  */
 package com.mycompany.tiendatecnologica;
 
+import java.util.List;
+
 /**
  *
  * @author alumno
@@ -39,13 +41,13 @@ public class TiendaView extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jPanelInfo = new javax.swing.JPanel();
-        jLabelINFO = new javax.swing.JLabel();
         jButtonCategorias = new javax.swing.JButton();
         jButtonHacerCompra = new javax.swing.JButton();
-        jButtonProductos = new javax.swing.JButton();
+        jButtonHistorial = new javax.swing.JButton();
         jButtonUsuarios = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextAreaINFO = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -111,29 +113,6 @@ public class TiendaView extends javax.swing.JFrame {
 
         jButton1.getAccessibleContext().setAccessibleName("jButtonCerrar");
 
-        jPanelInfo.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabelINFO.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelINFO.setForeground(new java.awt.Color(0, 0, 0));
-        jLabelINFO.setText("jLabel4");
-
-        javax.swing.GroupLayout jPanelInfoLayout = new javax.swing.GroupLayout(jPanelInfo);
-        jPanelInfo.setLayout(jPanelInfoLayout);
-        jPanelInfoLayout.setHorizontalGroup(
-            jPanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelInfoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelINFO)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanelInfoLayout.setVerticalGroup(
-            jPanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelInfoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelINFO)
-                .addContainerGap(216, Short.MAX_VALUE))
-        );
-
         jButtonCategorias.setBackground(new java.awt.Color(255, 255, 255));
         jButtonCategorias.setFont(new java.awt.Font("Vivaldi", 1, 24)); // NOI18N
         jButtonCategorias.setForeground(new java.awt.Color(0, 0, 0));
@@ -158,15 +137,15 @@ public class TiendaView extends javax.swing.JFrame {
             }
         });
 
-        jButtonProductos.setBackground(new java.awt.Color(255, 255, 255));
-        jButtonProductos.setFont(new java.awt.Font("Vivaldi", 1, 24)); // NOI18N
-        jButtonProductos.setForeground(new java.awt.Color(0, 0, 0));
-        jButtonProductos.setText("Productos");
-        jButtonProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonProductos.setFocusPainted(false);
-        jButtonProductos.addActionListener(new java.awt.event.ActionListener() {
+        jButtonHistorial.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonHistorial.setFont(new java.awt.Font("Vivaldi", 1, 24)); // NOI18N
+        jButtonHistorial.setForeground(new java.awt.Color(0, 0, 0));
+        jButtonHistorial.setText("Historial");
+        jButtonHistorial.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonHistorial.setFocusPainted(false);
+        jButtonHistorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonProductosActionPerformed(evt);
+                jButtonHistorialActionPerformed(evt);
             }
         });
 
@@ -188,6 +167,12 @@ public class TiendaView extends javax.swing.JFrame {
         jLabel3.setText("B i e n v e n i d o   U s u a r i o ");
         jLabel3.setToolTipText("");
 
+        jTextAreaINFO.setBackground(new java.awt.Color(255, 255, 255));
+        jTextAreaINFO.setColumns(20);
+        jTextAreaINFO.setForeground(new java.awt.Color(0, 0, 0));
+        jTextAreaINFO.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaINFO);
+
         javax.swing.GroupLayout jPanelMainLayout = new javax.swing.GroupLayout(jPanelMain);
         jPanelMain.setLayout(jPanelMainLayout);
         jPanelMainLayout.setHorizontalGroup(
@@ -196,20 +181,20 @@ public class TiendaView extends javax.swing.JFrame {
             .addGroup(jPanelMainLayout.createSequentialGroup()
                 .addGroup(jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelMainLayout.createSequentialGroup()
+                        .addGap(442, 442, 442)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanelMainLayout.createSequentialGroup()
                         .addGap(358, 358, 358)
                         .addGroup(jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanelMainLayout.createSequentialGroup()
                                 .addComponent(jButtonCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(73, 73, 73)
-                                .addComponent(jButtonProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(71, 71, 71)
-                                .addComponent(jButtonUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanelInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(75, 75, 75)
+                                .addComponent(jButtonUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(69, 69, 69)
+                                .addComponent(jButtonHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1))
                         .addGap(35, 35, 35)
-                        .addComponent(jButtonHacerCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelMainLayout.createSequentialGroup()
-                        .addGap(442, 442, 442)
-                        .addComponent(jLabel3)))
+                        .addComponent(jButtonHacerCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(118, Short.MAX_VALUE))
         );
         jPanelMainLayout.setVerticalGroup(
@@ -221,12 +206,12 @@ public class TiendaView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addGroup(jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
+                .addGap(27, 27, 27)
                 .addGroup(jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanelInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonHacerCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonHacerCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(57, 57, 57))
         );
 
@@ -252,16 +237,39 @@ public class TiendaView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonHacerCompraActionPerformed
 
-    private void jButtonProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProductosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonProductosActionPerformed
+    private void jButtonHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHistorialActionPerformed
+    List<HistorialCompra> historial = BBDD.getHistorial();  // Obtener el historial de compras
+    StringBuilder info = new StringBuilder();
+
+    for (HistorialCompra compra : historial) {
+        info.append(compra.toString()).append("\n");  // Añadir la información del historial
+    }
+
+    jTextAreaINFO.setText(info.toString());  // Mostrar el historial en el JLabel
+    }//GEN-LAST:event_jButtonHistorialActionPerformed
 
     private void jButtonUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsuariosActionPerformed
-        // TODO add your handling code here:
+    List<Usuario> usuarios = BBDD.getUsuarios();  // Obtener la lista de categorías
+    StringBuilder info = new StringBuilder();
+
+    for (Usuario usuario : usuarios) {
+        info.append(usuario.toString()).append("\n");  // Añadir la información de cada categoría
+    }
+
+    jTextAreaINFO.setText(info.toString());  // Mostrar las categorías en el JTextArea
+
     }//GEN-LAST:event_jButtonUsuariosActionPerformed
 
     private void jButtonCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCategoriasActionPerformed
-        BBDD.getCategorias();
+    List<Categoria> categorias = BBDD.getCategorias();  // Obtener la lista de categorías
+    StringBuilder info = new StringBuilder();
+
+    for (Categoria categoria : categorias) {
+        info.append(categoria.toString()).append("\n");  // Añadir la ccv brtinformación de cada categoría
+    }
+
+    jTextAreaINFO.setText(info.toString());  // Mostrar las categorías en el JTextArea
+
     }//GEN-LAST:event_jButtonCategoriasActionPerformed
 
     /**
@@ -304,14 +312,14 @@ public class TiendaView extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonCategorias;
     private javax.swing.JButton jButtonHacerCompra;
-    private javax.swing.JButton jButtonProductos;
+    private javax.swing.JButton jButtonHistorial;
     private javax.swing.JButton jButtonUsuarios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabelINFO;
     private javax.swing.JPanel jPanelHead;
-    private javax.swing.JPanel jPanelInfo;
     private javax.swing.JPanel jPanelMain;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextAreaINFO;
     // End of variables declaration//GEN-END:variables
 }
