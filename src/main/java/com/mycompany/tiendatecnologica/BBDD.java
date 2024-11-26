@@ -8,8 +8,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -149,6 +152,7 @@ public class BBDD {
                         System.out.println("Categoría '" + nombre + "' insertada con éxito.");
                     }
                 }
+                
                 //INSERTAR PRODUCTOS
                 String insertSQLPro = "INSERT INTO productos (id, nombre, precio, descripcion, inventario) VALUES (?,?,?,?,?)";
                 String insertSQLCar = "INSERT INTO caracteristicas (producto_id, clave, valor) VALUES (?,?,?)";
@@ -411,4 +415,124 @@ public class BBDD {
         return historialCompras;  // Devolver la lista de historial de compras
     }
 
+    public boolean comprobarProductoId(int idProducto) {
+        String query = "SELECT id FROM productos WHERE id = ?";
+        try (Connection conn = DriverManager.getConnection(url);
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            pstmt.setInt(1, idProducto);
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                return rs.next();  // Si rs.next() es verdadero, significa que el idProducto existe
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error al comprobar el idProducto.");
+            return false;
+        }
+    }
+    
+    public String sacarImageneIdProducto(int idProducto){
+        String urlImagen = null;
+        String query = "SELECT imagen_url FROM imagenes WHERE producto_id = ?";
+        try (Connection conn = DriverManager.getConnection(url);
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            pstmt.setInt(1, idProducto);
+
+            ResultSet rs = pstmt.executeQuery();
+            urlImagen = rs.getString("imagen_url");
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error al comprobar el idProducto.");
+        }
+        return urlImagen;
+    }
+    
+    public String sacarCaracteristicasIdProducto(int idProducto) {
+        StringBuilder resultado = new StringBuilder();  // Usamos StringBuilder para mejorar el rendimiento
+        String query = "SELECT clave, valor FROM caracteristicas WHERE producto_id = ?";
+
+        try (Connection conn = DriverManager.getConnection(url);
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            pstmt.setInt(1, idProducto);  // Establecemos el idProducto como parámetro en la consulta
+
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                String clave = rs.getString("clave");
+                String valor = rs.getString("valor");
+                // Formato cada par clave-valor con una línea en blanco entre ellos
+                resultado.append(clave).append(": ").append(valor).append("\n");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error al comprobar el idProducto.");
+        }
+
+        return resultado.toString();  // Devolvemos la cadena generada
+    }
+    
+    public boolean comprobarUsuariosId(int idUsuarios) {
+        String query = "SELECT id FROM usuarios WHERE id = ?";
+        try (Connection conn = DriverManager.getConnection(url);
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            pstmt.setInt(1, idUsuarios);
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                return rs.next();  // Si rs.next() es verdadero, significa que el idProducto existe
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error al comprobar el idUsuario.");
+            return false;
+        }
+    }
+    
+    public void nuevaCompra(int usuarioId, int productoId, int cantidad) {
+        try (Connection conn = DriverManager.getConnection(url)) {
+            String insertSQLHist = "INSERT INTO historialCompras (usuario_id, producto_id, cantidad, fecha) VALUES (?,?,?,?)";
+            // Usar un PreparedStatement
+            try (PreparedStatement pstmt = conn.prepareStatement(insertSQLHist)) {
+                
+                // Establecer los parámetros en el PreparedStatement
+                pstmt.setInt(1, usuarioId);  // id del usuario
+                pstmt.setInt(2, productoId);
+                pstmt.setInt(3, cantidad);
+                LocalDate fechaCompra = LocalDate.now();
+                pstmt.setString(4, fechaCompra.toString() );
+                pstmt.executeUpdate();  // Ejecutar la inserción
+
+                System.out.println("Historial de compra del usuario " + usuarioId + " insertado con éxito.");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(BBDD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public int comprobarStock(int idProducto) {
+        int inventario = 0;
+        String query = "SELECT inventario FROM productos WHERE id = ?";
+
+        try (Connection conn = DriverManager.getConnection(url);
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            pstmt.setInt(1, idProducto);
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    inventario = rs.getInt("inventario");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("Error al comprobar el stock.");
+            }
+        }catch (SQLException ex) {
+            Logger.getLogger(BBDD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return inventario;
+    }
 }

@@ -16,7 +16,7 @@
               "camara": "48 MP",
               "bateria": "4500 mAh"
             },
-            "imagenes": ["src/main/resources/logoIcon.png", "imagen2.jpg"],
+            "imagenes": ["src/main/resources/Smartphone.png", "src/main/resources/Smartphone2.png"],
             "inventario": 10
           },
           {
@@ -30,7 +30,7 @@
               "ram": "16 GB",
               "disco": "1 TB SSD"
             },
-            "imagenes": ["imagen3.jpg", "imagen4.jpg"],
+            "imagenes": ["src/main/resources/LaptopGaming.png", "src/main/resources/LaptopGaming2.png"],
             "inventario": 5
           },
           {
@@ -43,7 +43,7 @@
               "conexion": "Bluetooth 5.0",
               "color": "Negro"
             },
-            "imagenes": ["imagen5.jpg", "imagen6.jpg"],
+            "imagenes": ["src/main/resources/AuricularesInalam.png", "src/main/resources/AuricularesInalam2.png"],
             "inventario": 25
           }
         ]
@@ -62,7 +62,7 @@
               "tamaño": "M, L, XL",
               "color": "Azul"
             },
-            "imagenes": ["imagen7.jpg", "imagen8.jpg"],
+            "imagenes": ["src/main/resources/CamisetaDeporte.png", "src/main/resources/CamisetaDeporte2.png"],
             "inventario": 50
           },
           {
@@ -75,7 +75,7 @@
               "tamaño": "40, 42, 44",
               "color": "Negro"
             },
-            "imagenes": ["imagen9.jpg", "imagen10.jpg"],
+            "imagenes": ["src/main/resources/Deportivas.png", "src/main/resources/Deportivas2.png"],
             "inventario": 30
           },
           {
@@ -88,7 +88,7 @@
               "bateria": "48 horas",
               "funciones": "Monitor de ritmo cardíaco, GPS"
             },
-            "imagenes": ["imagen11.jpg", "imagen12.jpg"],
+            "imagenes": ["src/main/resources/Reloj.png", "src/main/resources/Reloj2.png"],
             "inventario": 15
           }
         ]

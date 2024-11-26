@@ -21,7 +21,7 @@ public class Categoria {
 
     @Override
     public String toString() {
-        return ("ID = " + id + " Nombre = " + nombre + " Productos = " + idProductos);
+        return ("   ID: |" + id + "|    Nombre: |" + nombre + "|    Productos: |" + idProductos + "|");
     }
 
     // Getters y setters

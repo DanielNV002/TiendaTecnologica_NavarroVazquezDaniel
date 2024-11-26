@@ -17,7 +17,6 @@ public class TiendaView extends javax.swing.JFrame {
      */
     public TiendaView() {
         init();
-        BBDD Bd = new BBDD();
     }
     
     public void init(){
@@ -177,7 +176,7 @@ public class TiendaView extends javax.swing.JFrame {
         jPanelMain.setLayout(jPanelMainLayout);
         jPanelMainLayout.setHorizontalGroup(
             jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelHead, javax.swing.GroupLayout.DEFAULT_SIZE, 1342, Short.MAX_VALUE)
+            .addComponent(jPanelHead, javax.swing.GroupLayout.DEFAULT_SIZE, 1341, Short.MAX_VALUE)
             .addGroup(jPanelMainLayout.createSequentialGroup()
                 .addGroup(jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelMainLayout.createSequentialGroup()
@@ -195,7 +194,7 @@ public class TiendaView extends javax.swing.JFrame {
                             .addComponent(jScrollPane1))
                         .addGap(35, 35, 35)
                         .addComponent(jButtonHacerCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(118, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
         jPanelMainLayout.setVerticalGroup(
             jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,7 +202,7 @@ public class TiendaView extends javax.swing.JFrame {
                 .addComponent(jPanelHead, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -234,18 +233,24 @@ public class TiendaView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonHacerCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHacerCompraActionPerformed
-        // TODO add your handling code here:
+        CompraView Cv = new CompraView();
+        Cv.show();
     }//GEN-LAST:event_jButtonHacerCompraActionPerformed
 
     private void jButtonHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHistorialActionPerformed
     List<HistorialCompra> historial = BBDD.getHistorial();  // Obtener el historial de compras
     StringBuilder info = new StringBuilder();
 
-    for (HistorialCompra compra : historial) {
-        info.append(compra.toString()).append("\n");  // Añadir la información del historial
+    for (HistorialCompra hC : historial) {
+        String formattedCategoria = String.format(" ID Usuario: %-10d \t ID Producto: %-20s \t Cantidad: %-8s \t Fecha: %-11s", 
+                                                  hC.getUsuarioId(), 
+                                                  hC.getProductoId(),
+                                                  hC.getCantidad(),
+                                                  hC.getFecha());
+        info.append(formattedCategoria).append("\n---------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
     }
 
-    jTextAreaINFO.setText(info.toString());  // Mostrar el historial en el JLabel
+    jTextAreaINFO.setText("---------------------------------------------------------------------------------------------------------------------------------------------------------------\n" +info.toString());  // Mostrar el historial en el JLabel
     }//GEN-LAST:event_jButtonHistorialActionPerformed
 
     private void jButtonUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsuariosActionPerformed
@@ -253,22 +258,34 @@ public class TiendaView extends javax.swing.JFrame {
     StringBuilder info = new StringBuilder();
 
     for (Usuario usuario : usuarios) {
-        info.append(usuario.toString()).append("\n");  // Añadir la información de cada categoría
+        String formattedCategoria = String.format(" ID: %-10d \t Nombre: %-20s \t Email: %-20s \t Calle: %-20s \t Nº: %-8s \t Ciudad: %-8s \t Pais: %-10s", 
+                                                  usuario.getId(), 
+                                                  usuario.getNombre(),
+                                                  usuario.getEmail(),
+                                                  usuario.getCalle(),
+                                                  usuario.getNumero(),
+                                                  usuario.getCiudad(),
+                                                  usuario.getPais());
+        info.append(formattedCategoria).append("\n-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
     }
 
-    jTextAreaINFO.setText(info.toString());  // Mostrar las categorías en el JTextArea
+    jTextAreaINFO.setText("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n" +info.toString());  // Mostrar las categorías en el JTextArea
 
     }//GEN-LAST:event_jButtonUsuariosActionPerformed
 
     private void jButtonCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCategoriasActionPerformed
-    List<Categoria> categorias = BBDD.getCategorias();  // Obtener la lista de categorías
+    List<Categoria> categorias = BBDD.getCategorias();
     StringBuilder info = new StringBuilder();
 
     for (Categoria categoria : categorias) {
-        info.append(categoria.toString()).append("\n");  // Añadir la ccv brtinformación de cada categoría
+        String formattedCategoria = String.format(" ID: %-20d \t Nombre: %-40s \t IdProductos: %-20s", 
+                                                  categoria.getId(), 
+                                                  categoria.getNombre(),
+                                                  categoria.getIdProductos()); 
+        info.append(formattedCategoria).append("\n--------------------------------------------------------------------------------------------------------------------------------------------------------\n");
     }
 
-    jTextAreaINFO.setText(info.toString());  // Mostrar las categorías en el JTextArea
+    jTextAreaINFO.setText("--------------------------------------------------------------------------------------------------------------------------------------------------------\n" +info.toString());  // Mostrar las categorías en el JTextArea
 
     }//GEN-LAST:event_jButtonCategoriasActionPerformed
 

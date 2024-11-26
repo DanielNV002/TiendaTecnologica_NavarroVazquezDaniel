@@ -38,12 +38,10 @@ public class HistorialCompra {
 
     @Override
     public String toString() {
-        return "HistorialCompra{" +
-                ", usuario=" + usuarioId +
-                ", producto=" + productoId +
-                ", cantidad=" + cantidad +
-                ", fecha='" + fecha + '\'' +
-                '}';
+        return  "   Usuario ID: |" + usuarioId + "| \t" +
+                "Producto ID: |" + productoId + "| \t" +
+                "Cantidad: |" + cantidad + "| \t    " +
+                "   Fecha: '|" + fecha + "|'";
     }
 }
 
