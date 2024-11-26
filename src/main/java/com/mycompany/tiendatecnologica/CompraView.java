@@ -330,11 +330,14 @@ public class CompraView extends javax.swing.JFrame {
 
     private void jButtonHacerCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHacerCompraActionPerformed
         BBDD Bd = new BBDD();
+        String cliente = jTextFieldCli.getText().trim();
+        String producto = jTextFieldPro.getText().trim();
+        String cantidad = jTextFieldCant.getText().trim();
 
        // Verificar si los campos están vacíos antes de intentar convertirlos
-       if (("".equals(jTextFieldCli.getText()) || jTextFieldCli.getText() == null) || 
-           ("".equals(jTextFieldPro.getText()) || jTextFieldPro.getText() == null) || 
-           ("".equals(jTextFieldCant.getText()) || jTextFieldCant.getText() == null)) {
+       if (("".equals(cliente) || cliente == null) || 
+           ("".equals(producto) || producto == null) || 
+           ("".equals(cantidad) || cantidad == null)) {
 
            jTextFieldCli.setText("Escriba algo");
            jTextFieldPro.setText("Escriba algo");
@@ -344,18 +347,18 @@ public class CompraView extends javax.swing.JFrame {
 
        // Si los campos no están vacíos, proceder a la conversión
        try {
-           int idUsuario = Integer.parseInt(jTextFieldCli.getText());
-           int idProducto = Integer.parseInt(jTextFieldPro.getText());
-           int cantidad = Integer.parseInt(jTextFieldCant.getText());
+           int idUsuario = Integer.parseInt(jTextFieldCli.getText().trim());
+           int idProducto = Integer.parseInt(jTextFieldPro.getText().trim());
+           int idCantidad = Integer.parseInt(jTextFieldCant.getText().trim());
 
            if (!Bd.comprobarUsuariosId(idUsuario)) {
                jTextFieldCli.setText("No Existe");
            } else if (!Bd.comprobarProductoId(idProducto)) {
                jTextFieldPro.setText("No Existe");
-           } else if (Bd.comprobarStock(idProducto) < cantidad) {
+           } else if (Bd.comprobarStock(idProducto) < idCantidad) {
                jTextFieldCant.setText("No hay Stock");
            } else {
-               Bd.nuevaCompra(idUsuario, idProducto, cantidad);
+               Bd.nuevaCompra(idUsuario, idProducto, idCantidad);
            }
 
        } catch (NumberFormatException e) {
